@@ -1,32 +1,79 @@
 [
   {
-    "id": "dd037191-5c5b-4fb4-8b89-47e82c0f9090",
+    "id": "74c8d0e6-54a5-4cb7-a4c5-052dfeeeb43e",
     "name": "Maicon Souza",
     "cpf": "355",
-    "statement": []
+    "statement": [
+      {
+        "operation": "creation",
+        "amount": 0,
+        "totalAmount": 0,
+        "destription": "Conta criada",
+        "operationDate": "22/11/2022 13:16:53"
+      },
+      {
+        "operation": "deposit",
+        "amount": 1000,
+        "totalAmount": 1000,
+        "description": "New Deposito",
+        "operationDate": "22/11/2022 13:39:08"
+      },
+      {
+        "operation": "deposit",
+        "amount": 1050,
+        "totalAmount": 2050,
+        "description": "New Deposito",
+        "operationDate": "22/11/2022 13:39:21"
+      }
+    ]
   },
   {
-    "id": "48908e16-9f19-460d-b3f7-bf0209132935",
-    "name": "Comandante",
-    "cpf": "277",
-    "statement": []
-  },
-  {
-    "id": "31f30330-0f57-446a-9ece-c9cf5c209394",
-    "name": "Taluzinha",
-    "cpf": "877",
-    "statement": []
-  },
-  {
-    "id": "598b185d-7f1a-491a-948c-944853fa6dc9",
+    "id": "ddbd0130-a288-444d-be5c-2b56547d0605",
     "name": "Dona Maia",
-    "cpf": "333",
-    "statement": []
-  },
-  {
-    "id": "8b7454b8-2be9-44de-b0e5-64305b796d33",
-    "name": "Pretinho",
     "cpf": "888",
-    "statement": []
+    "statement": [
+      {
+        "operation": "creation",
+        "amount": 0,
+        "totalAmount": 0,
+        "destription": "Conta criada",
+        "operationDate": "21/11/2022 13:46:08"
+      },
+      {
+        "operation": "deposit",
+        "amount": 15,
+        "totalAmount": 15,
+        "description": "New Deposito",
+        "operationDate": "22/11/2022 13:48:08"
+      },
+      {
+        "operation": "deposit",
+        "amount": 15,
+        "totalAmount": 30,
+        "description": "New Deposito",
+        "operationDate": "22/11/2022 13:48:13"
+      },
+      {
+        "operation": "withdraw",
+        "amount": 2,
+        "totalAmount": 28,
+        "description": "saque",
+        "operationDate": "22/11/2022 14:27:52"
+      },
+      {
+        "operation": "withdraw",
+        "amount": 2,
+        "totalAmount": 26,
+        "description": "saque",
+        "operationDate": "22/11/2022 14:29:39"
+      },
+      {
+        "operation": "withdraw",
+        "amount": 26,
+        "totalAmount": 0,
+        "description": "saque",
+        "operationDate": "23/11/2022 14:29:56"
+      }
+    ]
   }
 ]

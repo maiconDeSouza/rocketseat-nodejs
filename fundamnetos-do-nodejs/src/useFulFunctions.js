@@ -8,7 +8,13 @@ function createAccount(name, cpf){
         id: uuidv4(),
         name,
         cpf,
-        statement: []
+        statement: [{
+            operation: 'creation',
+            amount: 0,
+            totalAmount: 0,
+            destription: 'Conta criada',
+            operationDate: new Date().toLocaleString('pt-BR', {timeZone: 'UTC'})
+        }]
     }
 }
 
@@ -29,7 +35,51 @@ function getCustomer(searchItem, valueToCompare){
     }
 }
 
+function createOperation(operation, amount, totalAmount, description){
+    if(typeof amount !== 'number' || typeof totalAmount !== 'number'){
+        throw 'Amount ou Total Amount percisam ser números'
+    }
+
+    if(operation === 'deposit' && amount >= 0){
+        return {
+            operation,
+            amount,
+            totalAmount: totalAmount + amount,
+            description,
+            operationDate: new Date().toLocaleString('pt-BR', {timeZone: 'UTC'})
+        }
+    } 
+
+    if(operation === 'withdraw' && amount > 0){
+        return {
+            operation,
+            amount,
+            totalAmount: totalAmount - amount,
+            description,
+            operationDate: new Date().toLocaleString('pt-BR', {timeZone: 'UTC'})
+        }
+    }
+
+    if(operation !== 'deposit' || operation !== 'withdraw'){
+        throw 'Operação Invalida'
+    }
+}
+
+function filterStatementDate(statement, date){
+    const filterStatement = statement.filter(item => {
+        const filter = item.operationDate.split(" ")[0]
+
+        if(filter === date){
+            return item
+        }
+    })
+
+    return filterStatement
+}
+
 module.exports = {
     createAccount,
-    getCustomer
+    getCustomer,
+    createOperation,
+    filterStatementDate
 }

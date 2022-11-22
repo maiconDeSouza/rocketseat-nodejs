@@ -9,7 +9,14 @@ const Controllers = require('./Controllers')
 
 app.post('/account', Middleware.checkIfThereIsCPF, Controllers.createNewCustomer)
 
-app.get('/statement/:id', Controllers.statement)
+app.get('/statement/date', Middleware.checkID, Controllers.statementDate)
+
+app.get('/statement', Middleware.checkID, Controllers.statement)
+
+
+app.post('/deposit', Middleware.checkID, Controllers.deposit)
+
+app.post('/withdraw', Middleware.checkID, Controllers.withdraw)
 
 
 
