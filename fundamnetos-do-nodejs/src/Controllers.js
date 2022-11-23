@@ -29,6 +29,37 @@ function createNewCustomer(req, res){
     }
 }
 
+function editCustomer(req, res){
+    const { customer } = req
+    const { name } = req.body
+
+    try {
+        if(!name){
+            return res.status(401).json({
+                message: "Edição inválida"
+            })
+        }
+    
+        const newCustomers = customers.map(customerList => {
+            if(customerList.id === customer.id){
+                customerList.name = name
+                return  customerList
+            }
+            return customerList
+        })
+    
+        fs.writeFileSync(pathDB, JSON.stringify(newCustomers, null, 2))
+    
+        res.status(200).json({
+            message: "Usuário Atualizado com Sucesso!"
+        })
+    } catch (e) {
+        res.status(500).json({
+            message: "Problema no servidor!",
+        })
+    }
+}
+
 function statement(req, res){
     const { customer } = req
     
@@ -42,6 +73,41 @@ function statement(req, res){
             message: "Problema no servidor!",
         })
     }
+}
+
+function statementDate(req, res){
+    const { date } = req.body
+    const { customer } = req
+    const statement = customer.statement
+
+    try {
+        const filterStatement = useFul.filterStatementDate(statement, date)
+
+        if(!Array.isArray(filterStatement) || filterStatement.length === 0){
+            res.status(400).json({
+                message: "Extrado não encontrado!"
+            })
+        }
+
+        res.status(200).json({
+        filterStatement
+    })
+    } catch (e) {
+        res.status(500).json({
+            message: "Problema no servidor!"
+        })
+    }
+}
+
+function balance(req, res){
+    const { customer } = req
+
+    const length = customer.statement.length
+    const balance = customer.statement[length - 1].totalAmount
+
+    res.status(200).json({
+        balance
+    })
 }
 
 function deposit(req, res){
@@ -109,36 +175,44 @@ function withdraw(req, res){
     }
 }
 
-function statementDate(req, res){
-    const { date } = req.body
+function deleteCustomer(req, res){
     const { customer } = req
-    const statement = customer.statement
+    const { del } = req.body
+
+    if(!del){
+        return res.status(401).json({
+            message: `Exclusão não pode ser concluida`
+        })
+    }
 
     try {
-        const filterStatement = useFul.filterStatementDate(statement, date)
+        const newCustomers = customers.filter(customerList => {
+            return customerList.id !== customer.id
+        })
 
-        if(!Array.isArray(filterStatement) || filterStatement.length === 0){
-            res.status(400).json({
-                message: "Extrado não encontrado!"
-            })
-        }
+        fs.writeFileSync(pathDB, JSON.stringify(newCustomers, null, 2))
 
         res.status(200).json({
-        filterStatement
-    })
+            message: "Customer Deletado com sucesso!"
+        })
     } catch (e) {
         res.status(500).json({
-            message: "Problema no servidor!"
+            error: e
         })
     }
 }
+
+
 
 module.exports = {
     createNewCustomer,
     statement,
     statementDate,
     deposit,
-    withdraw
+    withdraw,
+    balance,
+    editCustomer,
+    deleteCustomer
 }
 
 //createOperation(operation, amount, totalAmount, description)

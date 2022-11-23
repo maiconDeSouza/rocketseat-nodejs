@@ -26,54 +26,5 @@
         "operationDate": "22/11/2022 13:39:21"
       }
     ]
-  },
-  {
-    "id": "ddbd0130-a288-444d-be5c-2b56547d0605",
-    "name": "Dona Maia",
-    "cpf": "888",
-    "statement": [
-      {
-        "operation": "creation",
-        "amount": 0,
-        "totalAmount": 0,
-        "destription": "Conta criada",
-        "operationDate": "21/11/2022 13:46:08"
-      },
-      {
-        "operation": "deposit",
-        "amount": 15,
-        "totalAmount": 15,
-        "description": "New Deposito",
-        "operationDate": "22/11/2022 13:48:08"
-      },
-      {
-        "operation": "deposit",
-        "amount": 15,
-        "totalAmount": 30,
-        "description": "New Deposito",
-        "operationDate": "22/11/2022 13:48:13"
-      },
-      {
-        "operation": "withdraw",
-        "amount": 2,
-        "totalAmount": 28,
-        "description": "saque",
-        "operationDate": "22/11/2022 14:27:52"
-      },
-      {
-        "operation": "withdraw",
-        "amount": 2,
-        "totalAmount": 26,
-        "description": "saque",
-        "operationDate": "22/11/2022 14:29:39"
-      },
-      {
-        "operation": "withdraw",
-        "amount": 26,
-        "totalAmount": 0,
-        "description": "saque",
-        "operationDate": "23/11/2022 14:29:56"
-      }
-    ]
   }
 ]

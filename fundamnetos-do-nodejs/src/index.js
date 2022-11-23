@@ -9,10 +9,15 @@ const Controllers = require('./Controllers')
 
 app.post('/account', Middleware.checkIfThereIsCPF, Controllers.createNewCustomer)
 
+app.patch('/account', Middleware.checkID, Controllers.editCustomer)
+
+app.delete('/account', Middleware.checkID, Controllers.deleteCustomer)
+
 app.get('/statement/date', Middleware.checkID, Controllers.statementDate)
 
 app.get('/statement', Middleware.checkID, Controllers.statement)
 
+app.get('/balance', Middleware.checkID, Controllers.balance)
 
 app.post('/deposit', Middleware.checkID, Controllers.deposit)
 
